@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "author": "LetsPain",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 37.26,
+      "left": -12.7,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -191.7, "left": 138.6, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -25.4,
+      "left": 123.95,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "r1:2", "red", [ "v28.8" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0", "h-297.6", "v268.8" ] ],
+    [ "r1:1", "dht1:SDA", "green", [ "h0" ] ],
+    [ "esp:15", "dht1:SDA", "yellow", [ "v-28.8", "h57.6" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v115.2", "h-220.8", "v19.2" ] ]
+  ],
+  "dependencies": {}
+}
